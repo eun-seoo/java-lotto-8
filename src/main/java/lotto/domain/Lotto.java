@@ -4,7 +4,6 @@ import java.util.HashSet;
 import java.util.List;
 
 public class Lotto {
-    private static final int LOTTO_SIZE = 6;
     private static final int MIN_NUMBER = 1;
     private static final int MAX_NUMBER = 45;
 
@@ -33,5 +32,13 @@ public class Lotto {
         if (numbers.stream().anyMatch(number -> number < MIN_NUMBER || number > MAX_NUMBER)) {
             throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
         }
+    }
+
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
+
+    public boolean contains(int bonusNumber) {
+        return numbers.contains(bonusNumber);
     }
 }
