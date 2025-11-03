@@ -16,8 +16,10 @@ public class OutputView {
     public static void printResult(LottoResult result, int purchaseAmount) {
         System.out.println("당첨 통계");
         System.out.println("---");
-        for(Rank rank : Rank.values()) {
-            if(rank == Rank.NONE) continue;
+        for (Rank rank : Rank.values()) {
+            if (rank == Rank.NONE) {
+                continue;
+            }
 
             String bonusMessage = "";
             if (rank.hasBonus()) {
@@ -34,7 +36,6 @@ public class OutputView {
         double profitRate = result.calculateProfitRate(purchaseAmount);
         System.out.printf("총 수익률은 %.1f%%입니다.%n", profitRate);
     }
-
 
 
 }

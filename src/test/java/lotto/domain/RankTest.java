@@ -8,14 +8,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 public class RankTest {
     @ParameterizedTest
-    @CsvSource({
-            "6,false,FIRST",
-            "5,true,SECOND",
-            "5,false,THIRD",
-            "4,false,FOURTH",
-            "3,false,FIFTH",
-            "2,false,NONE"
-    })
+    @CsvSource({"6,false,FIRST", "5,true,SECOND", "5,false,THIRD", "4,false,FOURTH", "3,false,FIFTH", "2,false,NONE"})
     void 일치개수와_보너스여부에_따라_등수를_반환한다(int count, boolean bonus, Rank expected) {
         assertThat(Rank.of(count, bonus)).isEqualTo(expected);
     }

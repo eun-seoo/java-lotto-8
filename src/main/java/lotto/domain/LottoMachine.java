@@ -14,7 +14,7 @@ public class LottoMachine {
 
         List<Lotto> lottos = new ArrayList<>();
 
-        for(int i = 0; i < count; i++) {
+        for (int i = 0; i < count; i++) {
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6)
                     .stream()
                     .sorted()
@@ -26,7 +26,7 @@ public class LottoMachine {
     }
 
     private void validateAmount(int amount) {
-        if(amount % PRICE != 0) {
+        if (amount % PRICE != 0) {
             throw new IllegalArgumentException("[ERROR] 구입 금액은 1000원 단위여야 합니다.");
         }
     }

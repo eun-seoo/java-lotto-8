@@ -26,7 +26,7 @@ public class WinningLotto {
         int count = 0;
 
         for (int number : userNumbers) {
-            if (winningNumbers.getNumbers().contains(number)){
+            if (winningNumbers.getNumbers().contains(number)) {
                 count++;
             }
         }
