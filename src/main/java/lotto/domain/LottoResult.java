@@ -12,19 +12,16 @@ public class LottoResult {
         countResults(userLottos, winningLotto);
     }
 
-    // 개수 조회
     public int getCountByRank(Rank rank) {
         return result.get(rank);
     }
 
-    // 수익률 계산
     public double calculateProfitRate(int purchaseAmount) {
         long totalPrize = calculateTotalPrize();
         double profitRate = (double) totalPrize / purchaseAmount;
-        return Math.round(profitRate * 100) / 100.0;
+        return Math.round(profitRate * 1000) / 10.0;
     }
 
-    // 모든 Rank를 0으로 초기화
     private Map<Rank, Integer> initResult() {
         Map<Rank, Integer> map = new EnumMap<>(Rank.class);
         for (Rank rank : Rank.values()) {
@@ -33,7 +30,6 @@ public class LottoResult {
         return map;
     }
 
-    // 등수 집계
     private void countResults(List<Lotto> userLottos, WinningLotto winningLotto) {
         for (Lotto lotto : userLottos) {
             Rank rank = winningLotto.match(lotto);
@@ -41,10 +37,9 @@ public class LottoResult {
         }
     }
 
-    //Rank별 상금 합산
     private long calculateTotalPrize() {
         long total = 0;
-        for(Rank rank : Rank.values()) {
+        for (Rank rank : Rank.values()) {
             total += (long) rank.getPrize() * result.get(rank);
         }
         return total;
