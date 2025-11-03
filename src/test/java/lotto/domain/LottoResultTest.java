@@ -1,23 +1,30 @@
 package lotto.domain;
 
 import java.util.List;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static lotto.domain.WinningLottoTest.*;
 
 public class LottoResultTest {
+    private WinningLotto winningLotto;
+
+    @BeforeEach
+    void setUp() {
+        winningLotto = new WinningLotto(new Lotto(WINNING_NUMBERS), BONUS_NUMBER);
+    }
+
     @Test
     void 각_등수별_당첨_개수를_집계한다() {
-        //given
-        WinningLotto winningLotto = new WinningLotto(new Lotto(List.of(1, 2, 3, 4, 5, 6)), 7);
         List<Lotto> userLottos = List.of(
                 new Lotto(List.of(1, 2, 3, 4, 5, 6)),
                 new Lotto(List.of(1, 2, 3, 4, 5, 7)),
                 new Lotto(List.of(1, 2, 3, 4, 8, 9))
         );
-        //when
+
         LottoResult result = new LottoResult(userLottos, winningLotto);
-        //then
+
         assertThat(result.getCountByRank(Rank.FIRST)).isEqualTo(1);
         assertThat(result.getCountByRank(Rank.SECOND)).isEqualTo(1);
         assertThat(result.getCountByRank(Rank.FOURTH)).isEqualTo(1);
@@ -26,7 +33,6 @@ public class LottoResultTest {
 
     @Test
     void 총_수익률을_계산한다() {
-        WinningLotto winningLotto = new WinningLotto(new Lotto(List.of(1, 2, 3, 4, 5, 6)), 7);
         List<Lotto> userLottos = List.of(
                 new Lotto(List.of(1, 2, 3, 4, 5, 6)),
                 new Lotto(List.of(1, 2, 3, 4, 5, 7))
