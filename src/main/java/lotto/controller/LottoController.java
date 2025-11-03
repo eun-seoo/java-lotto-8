@@ -5,7 +5,7 @@ import lotto.domain.Lotto;
 import lotto.domain.LottoMachine;
 import lotto.domain.LottoResult;
 import lotto.domain.WinningLotto;
-import lotto.view.InputView;
+import lotto.view.*;
 
 public class LottoController {
     private final LottoMachine lottoMachine = new LottoMachine();
@@ -15,7 +15,7 @@ public class LottoController {
             int purchaseAmount = InputView.readPurchaseAmount();
             List<Lotto> lottos = lottoMachine.buyLottos(purchaseAmount);
 
-            outputView.printPurchaseLottos(lottos);
+            OutputView.printPurchasedLottos(lottos);
 
             List<Integer> winningNumbers = InputView.readWinningNumbers();
             int bonusNumber = InputView.readBonusNumber();
@@ -23,10 +23,9 @@ public class LottoController {
             WinningLotto winningLotto = new WinningLotto(new Lotto(winningNumbers), bonusNumber);
             LottoResult lottoResult = new LottoResult(lottos, winningLotto);
 
-            outputView.printResult(lottoResult, purchaseAmount);
+            OutputView.printResult(lottoResult, purchaseAmount);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
-            throw e;
         }
     }
 }
