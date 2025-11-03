@@ -41,7 +41,7 @@ public enum Rank {
         return hasBonus;
     }
 
-    public Object getMatchCount() {
+    public int getMatchCount() {
         return matchCount;
     }
 

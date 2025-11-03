@@ -36,7 +36,7 @@ public class LottoResultTest {
         LottoResult result = new LottoResult(userLottos, winningLotto);
         double profitRate = result.calculateProfitRate(purchaseAmount);
 
-        assertThat(profitRate).isEqualTo(1_015_000.00);
+        assertThat(profitRate).isEqualTo(101_500_000.0);
     }
 
 }
